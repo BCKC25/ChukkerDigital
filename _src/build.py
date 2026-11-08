@@ -105,8 +105,8 @@ PLANS = [
 BUILDS = [
     ("Starter Template Site", 1500, "Squarespace or Wix template site, up to 5 pages, built for phones first, with basic search setup."),
     ("Standard Custom Design", 2500, "Custom design around your brand, up to 10 pages, with Google Analytics and Business Profile set up."),
-    ("Custom-Coded Hand-Built Site", 4000, "Coded from scratch with booking built into the site and built for speed on every device."),
-    ("Booking and payments add-on", 300, "Connect Square, Mindbody, Vagaro or Calendly so customers can book and pay from your site."),
+    ("Custom-Coded Hand-Built Site", 4000, "Coded from scratch, built for speed on every device, with booking and payments included at no extra cost."),
+    ("Booking and payments add-on", 300, "Connect Square, Mindbody, Vagaro or Calendly so customers can book and pay from your site. Included free with a Custom-Coded Hand-Built Site."),
 ]
 
 # ---------------------------------------------------------------------------
@@ -144,7 +144,7 @@ FAQ = {
         ("How is a website build paid for?",
          "50% to start and 50% at launch. The site, domain and hosting are in your name."),
         ("Can you connect my booking system?",
-         "Yes. Square, Mindbody, Vagaro or Calendly can be connected so customers book and pay right from your site, starting at $300."),
+         "Yes. Square, Mindbody, Vagaro or Calendly can be connected so customers book and pay right from your site. It's a $300+ add-on for Template and Custom Design sites, and included at no extra cost with a Hand-Built Site."),
         ("Which option do I need?",
          "A template site suits a business that needs something clean and simple. A custom design suits a business with services, pricing, a gallery and a team to show. A hand-coded site is for something a template can't do, like your own booking flow built into the site."),
     ],
