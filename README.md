@@ -52,8 +52,8 @@ Check GitHub's current Pages docs for the IP addresses before entering them; the
 - JSON-LD structured data: `ProfessionalService` (business, phone, service area), `WebSite`, `WebPage`, `BreadcrumbList`, `FAQPage`, and `OfferCatalog` for plan and build pricing
 - `sitemap.xml` and `robots.txt`, regenerated on every build
 - One `h1` per page, semantic landmarks, descriptive link text
-- Self-hosted, subset fonts (about 56 KB total) and no framework JavaScript
+- Self-hosted, subset fonts (about 75 KB total) and no framework JavaScript
 
 ## Fonts
 
-Cormorant Garamond and Archivo are licensed under the SIL Open Font License 1.1; see `LICENSE-fonts.txt`.
+Cormorant Garamond, Archivo and Big Shoulders are licensed under the SIL Open Font License 1.1; see `LICENSE-fonts.txt`.

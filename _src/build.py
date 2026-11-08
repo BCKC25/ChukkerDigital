@@ -175,7 +175,7 @@ PAGES = [
         "slug": "plans", "src": "plans.html", "nav": "plans",
         "title": "Monthly Website, SEO & Ads Plans in Aiken, SC | Chukker Digital",
         "description": "Flat monthly plans for Aiken small businesses: website care from $300, local SEO from $800, and Google and Meta ad management from $1,500. No hourly billing.",
-        "h1": "Plans and pricing", "crumb": "Plans",
+        "h1": "Plans and pricing", "crumb": "Plans", "period": "Scoreboard",
         "intro": "Three flat monthly plans, each built for a different stage. Find the description that fits your business, and that's your plan.",
         "faq": "plans", "priority": "0.9", "offers": "plans",
     },
@@ -183,7 +183,7 @@ PAGES = [
         "slug": "website-builds", "src": "website-builds.html", "nav": "website-builds",
         "title": "Website Design in Aiken, SC from $1,500 | Chukker Digital",
         "description": "New websites for Aiken businesses: template sites from $1,500, custom designs from $2,500, hand-coded from $4,000. Written quote first, and you own the site.",
-        "h1": "A new website, built to bring in customers", "crumb": "Website builds",
+        "h1": "A new website, built to bring in customers", "crumb": "Website builds", "period": "The build",
         "intro": "A one-time project, separate from the monthly plans. You get a written quote before any work starts, and you own the finished site.",
         "faq": "website-builds", "priority": "0.9", "offers": "builds",
     },
@@ -191,7 +191,7 @@ PAGES = [
         "slug": "how-it-works", "src": "how-it-works.html", "nav": "how-it-works",
         "title": "How It Works: Requests, Turnaround & Billing | Chukker Digital",
         "description": "One request form with a due date back. Same-day fixes when something breaks, most requests done in 3 business days, and every account stays in your name.",
-        "h1": "How working together works", "crumb": "How it works",
+        "h1": "How working together works", "crumb": "How it works", "period": "Rules of play",
         "intro": "Requests go through one simple form and are handled on a set schedule with published turnaround times. You always know where a request stands.",
         "faq": "how-it-works", "priority": "0.7",
     },
@@ -199,7 +199,7 @@ PAGES = [
         "slug": "work", "src": "work.html", "nav": "work",
         "title": "Our Work for Aiken Businesses | Chukker Digital",
         "description": "Websites, Google listings and ads Chukker Digital runs for Aiken businesses, including a salon, a yoga studio and a mobile kettle corn vendor.",
-        "h1": "Work for Aiken businesses", "crumb": "Work",
+        "h1": "Work for Aiken businesses", "crumb": "Work", "period": "Today's lineup",
         "intro": "Chukker Digital runs the websites, Google listings and ads for these local businesses today.",
         "priority": "0.6",
     },
@@ -207,7 +207,7 @@ PAGES = [
         "slug": "about", "src": "about.html", "nav": "about",
         "title": "About Chukker Digital, Aiken, SC",
         "description": "Chukker Digital is a one-person web and marketing business in Aiken, SC, run by Josh Lovett. Local, flat-rate and transparent, with every account in your name.",
-        "h1": "One local person, not an agency", "crumb": "About",
+        "h1": "One local person, not an agency", "crumb": "About", "period": "Player profile",
         "intro": "Chukker Digital is run by Josh Lovett in Aiken, South Carolina, for owner-run businesses that want agency-level work without the agency overhead.",
         "priority": "0.6",
     },
@@ -215,7 +215,7 @@ PAGES = [
         "slug": "free-audit", "src": "free-audit.html", "nav": "free-audit",
         "title": "Free 15-Minute Website Audit in Aiken, SC | Chukker Digital",
         "description": "Book a free 15-minute audit of your website speed, mobile view, Google Business Profile and search ranking, shown on your own screen. Aiken, SC. No obligation.",
-        "h1": "Book your free 15-minute audit", "crumb": "Free audit",
+        "h1": "Book your free 15-minute audit", "crumb": "Free audit", "period": "The throw-in",
         "intro": "We'll look at your site speed, mobile view, Google profile and search ranking together, on your own screen, and show you the top few fixes.",
         "priority": "0.8", "no_cta": True,
     },
@@ -236,23 +236,90 @@ def money(n):
     return f"${n:,}"
 
 
-def plan_cards():
-    out = ['<div class="plans">']
+FEATURES = [
+    # (row label, [tier 1, tier 2, tier 3]); True = included, False = not included, text = detail
+    ("Site upkeep, security updates and backups", [True, True, True]),
+    ("Text and photo changes", ["5 a month", "5 a month", "5 a month"]),
+    ("Broken-site fixes the same day", [True, True, True]),
+    ("Monthly check-in email", [True, True, True]),
+    ("Local SEO and keyword targeting", [False, True, True]),
+    ("New pages or blog posts", [False, "2 a month", "2 a month"]),
+    ("Google Business Profile posts", [False, "Weekly", "Weekly"]),
+    ("Google and Meta ad management", [False, False, True]),
+    ("Monthly ROI report", [False, False, True]),
+]
+
+LINEUP = [
+    # (trade, business, what Chukker Digital does, optional (url, link text))
+    ("Salon in Aiken", "Total Vibe Salon & Studios",
+     "A custom-coded website with online booking for each provider: Square bookings built into the site, plus links for providers who book through Vagaro or Calendly.",
+     None),
+    ("Yoga studio in Aiken", "Peak Mobility Yoga",
+     "A new studio website launched from scratch, with Mindbody class sign-ups, Google Analytics, and Google Ads run through the Chukker Digital manager account.",
+     ("https://www.peakmobilityyoga.com/", "peakmobilityyoga.com")),
+    ("Mobile food vendor in Aiken", "Big Cheese Kettle Co.",
+     "Website care and local search for a mobile popcorn and kettle corn business that books events across the area.",
+     None),
+]
+
+
+def cell(value, feature):
+    cls = ' class="feature"' if feature else ""
+    if value is True:
+        inner = '<span class="yes" role="img" aria-label="Included">&#9679;</span>'
+    elif value is False:
+        inner = '<span class="no" role="img" aria-label="Not included">&ndash;</span>'
+    else:
+        inner = html.escape(value)
+    return f"<td{cls}>{inner}</td>"
+
+
+def scoreboard():
+    def price_range(p):
+        return f'to {money(p["max"])}{"+" if p["plus"] else ""} a month'
+
+    heads, prices = [], []
     for p in PLANS:
-        feature = " plan-feature" if p.get("feature") else ""
-        tag = '<span class="plan-tag">Full service</span>' if p.get("feature") else ""
-        price = f'{money(p["min"])}–{money(p["max"])}{"+" if p["plus"] else ""}'
-        items = "".join(f"<li>{html.escape(i)}</li>" for i in p["items"])
-        out.append(f'''<article class="plan{feature}">
-  <p class="plan-tier"><span>{p["tier"]}</span>{tag}</p>
-  <h3>{html.escape(p["name"])}</h3>
-  <p class="price">{price}<small>a month</small></p>
-  <p class="fit">{html.escape(p["fit"])}</p>
-  <ul class="ticks">{items}</ul>
-  <p class="common"><strong>Common fits:</strong> {html.escape(p["common"])}</p>
-</article>''')
-    out.append("</div>")
-    return "\n".join(out)
+        cls = ' class="feature"' if p.get("feature") else ""
+        heads.append(f'<th scope="col"{cls}><span class="tier">{p["tier"]}</span>'
+                     f'<span class="team">{html.escape(p["name"])}</span></th>')
+        prices.append(f'<td{cls}><span class="price">{money(p["min"])}<small>{price_range(p)}</small></span></td>')
+    rows = []
+    for label, values in FEATURES:
+        cells = "".join(cell(v, p.get("feature")) for p, v in zip(PLANS, values))
+        rows.append(f'<tr><th scope="row">{html.escape(label)}</th>{cells}</tr>')
+    fits = "".join(f'<td>{html.escape(p["common"])}</td>' for p in PLANS)
+    return (
+        '<div class="board">\n'
+        '  <div class="board-title"><h2 id="board-title">Scoreboard: three flat monthly plans</h2><p>No hourly billing</p></div>\n'
+        '  <table>\n'
+        '    <caption class="visually-hidden">Monthly plan comparison</caption>\n'
+        f'    <thead><tr><td></td>{"".join(heads)}</tr></thead>\n'
+        f'    <tbody><tr><th scope="row">Monthly rate</th>{"".join(prices)}</tr>\n'
+        f'    {"".join(rows)}</tbody>\n'
+        f'    <tfoot><tr><th scope="row">Common fits</th>{fits}</tr></tfoot>\n'
+        '  </table>\n'
+        '  <p class="board-note">Each plan includes everything in the one before it. Your exact rate is set in a '
+        'written quote after the free audit. Ad spend and hosting are paid by you, straight to Google, Meta or your host.</p>\n'
+        '</div>'
+    )
+
+
+def lineup():
+    items = []
+    for i, (trade, name, did, link) in enumerate(LINEUP, 1):
+        link_html = f' <a href="{link[0]}" rel="noopener">{link[1]}</a>' if link else ""
+        items.append(
+            f'<li>\n  <p class="jersey" aria-label="Number {i}">{i}</p>\n'
+            f'  <div><h3>{html.escape(name)}</h3><p class="trade">{html.escape(trade)}</p></div>\n'
+            f'  <p class="did">{html.escape(did)}{link_html}</p>\n</li>')
+    n = len(LINEUP) + 1
+    items.append(
+        f'<li class="open">\n  <p class="jersey" aria-label="Number {n}">{n}</p>\n'
+        '  <div><h3>Your business</h3><p class="trade">Open position</p></div>\n'
+        '  <p class="did">Start with a free 15-minute audit of your website, Google profile and search ranking. '
+        '<a href="/free-audit/">Book the audit</a></p>\n</li>')
+    return '<ol class="lineup">\n' + "\n".join(items) + "\n</ol>"
 
 
 def faq_html(key):
@@ -267,22 +334,28 @@ def strip_tags(s):
 
 
 def page_hero(page):
-    return f'''<section class="page-hero on-green" aria-labelledby="page-title">
+    return f'''<section class="page-hero" aria-labelledby="page-title">
   <div class="wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">{html.escape(page["crumb"])}</li></ol></nav>
-    <h1 id="page-title">{html.escape(page["h1"])}</h1>
-    <p class="lede">{html.escape(page["intro"])}</p>
+    <div class="page-hero-grid">
+      <p class="period">{html.escape(page["period"])}</p>
+      <div>
+        <h1 id="page-title">{html.escape(page["h1"])}</h1>
+        <p class="lede">{html.escape(page["intro"])}</p>
+      </div>
+    </div>
   </div>
 </section>'''
 
 
-CTA = '''<section class="section-tight on-green" aria-labelledby="cta-title">
-  <div class="wrap band">
+CTA = '''<section class="throwin" aria-labelledby="cta-title">
+  <div class="wrap">
+    <p class="period">The throw-in</p>
     <div>
-      <h2 id="cta-title" class="mt-0">Start with a free 15-minute audit</h2>
-      <p class="lede" style="margin:0">See where your site, Google profile and search ranking stand today, on your own screen.</p>
+      <h2 id="cta-title">Start with a free 15-minute audit</h2>
+      <p>See where your site, Google profile and search ranking stand today, on your own screen.</p>
     </div>
-    <div class="actions" style="margin-top:0">
+    <div class="actions">
       <a class="btn btn-gold" href="/free-audit/">Book a free audit</a>
       <a class="btn btn-line" href="tel:''' + PHONE_E164 + '''">Call ''' + PHONE_DISPLAY + '''</a>
     </div>
@@ -403,7 +476,8 @@ def build():
         for slug in ["plans", "website-builds", "how-it-works", "work", "about", "free-audit"]:
             values[f"nav_{slug}"] = ' aria-current="page"' if page["nav"] == slug else ""
         body_values = {
-            "plan_cards": plan_cards(),
+            "scoreboard": scoreboard(),
+            "lineup": lineup(),
             "faq": faq_html(page["faq"]) if page.get("faq") else "",
             "cta": "" if page.get("no_cta") else CTA,
             "page_hero": page_hero(page) if page.get("h1") else "",
