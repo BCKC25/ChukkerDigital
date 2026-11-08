@@ -198,7 +198,7 @@ PAGES = [
     {
         "slug": "work", "src": "work.html", "nav": "work",
         "title": "Our Work for Aiken Businesses | Chukker Digital",
-        "description": "Websites, Google listings and ads Chukker Digital runs for Aiken businesses, including a salon, a yoga studio and a mobile kettle corn vendor.",
+        "description": "Websites, Google listings and ads Chukker Digital runs for Aiken businesses, including a beauty studio, a yoga studio and a kettle corn maker.",
         "h1": "Work for Aiken businesses", "crumb": "Work", "period": "Today's lineup",
         "intro": "Chukker Digital runs the websites, Google listings and ads for these local businesses today.",
         "priority": "0.6",
@@ -251,15 +251,18 @@ FEATURES = [
 
 LINEUP = [
     # (trade, business, what Chukker Digital does, optional (url, link text))
-    ("Salon in Aiken", "Total Vibe Salon & Studios",
-     "A custom-coded website with online booking for each provider: Square bookings built into the site, plus links for providers who book through Vagaro or Calendly.",
-     None),
+    ("Beauty studio on Whiskey Road, Aiken", "Total Vibe Salon & Studios",
+     "A multi-service studio with lashes, hair, nails, waxing, spray tan and more under one roof. "
+     "Its custom-coded website sends each service to the right provider's booking: Square for lashes, "
+     "waxing and nails, and direct booking with each stylist for hair and spray tan.",
+     ("https://totalvibesalon.com/", "totalvibesalon.com")),
     ("Yoga studio in Aiken", "Peak Mobility Yoga",
      "A new studio website launched from scratch, with Mindbody class sign-ups, Google Analytics, and Google Ads run through the Chukker Digital manager account.",
      ("https://www.peakmobilityyoga.com/", "peakmobilityyoga.com")),
-    ("Mobile food vendor in Aiken", "Big Cheese Kettle Co.",
-     "Website care and local search for a mobile popcorn and kettle corn business that books events across the area.",
-     None),
+    ("Kettle corn maker in Aiken", "Big Cheese Kettle Co.",
+     "A veteran-owned, family-run maker of small-batch kettle corn and popcorn, sold at markets and events. "
+     "Its website shows the flavors and takes orders ahead for booth pickup and local delivery.",
+     ("https://bigcheesekettleco.com/", "bigcheesekettleco.com")),
 ]
 
 
