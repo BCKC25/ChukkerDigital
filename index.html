@@ -465,6 +465,31 @@
     if (e.key === 'Escape' && b.getAttribute('aria-expanded') === 'true') { b.setAttribute('aria-expanded', 'false'); b.focus(); }
   });
 })();
+
+/* Fade sections in as they scroll into view. Content is only hidden once this
+   script runs, so search engines and no-JS browsers always see everything. */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var targets = document.querySelectorAll(
+    '.order, .chukker, .board, .lineup li, .prow, .rules li, .steps li, .stat-block, .aside-card, .timetable tbody tr, .faq details, .contact-list li'
+  );
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  targets.forEach(function (el) {
+    // Stagger siblings in the same group: 0, 90, 180... capped so long lists don't drag.
+    var i = 0, s = el.previousElementSibling;
+    while (s) { if (s.classList.contains('reveal')) i++; s = s.previousElementSibling; }
+    el.style.setProperty('--reveal-delay', Math.min(i, 4) * 90 + 'ms');
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
