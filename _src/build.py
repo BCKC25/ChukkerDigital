@@ -317,10 +317,9 @@ def lineup():
             f'<li>\n  <p class="jersey" aria-label="Number {i}">{i}</p>\n'
             f'  <div><h3>{html.escape(name)}</h3><p class="trade">{html.escape(trade)}</p></div>\n'
             f'  <p class="did">{html.escape(did)}{link_html}</p>\n</li>')
-    n = len(LINEUP) + 1
     items.append(
-        f'<li class="open">\n  <p class="jersey" aria-label="Number {n}">{n}</p>\n'
-        '  <div><h3>Your business</h3><p class="trade">Open position</p></div>\n'
+        '<li class="open">\n  <p class="jersey" aria-hidden="true">+</p>\n'
+        '  <div><h3>Your business</h3><p class="trade">Next up</p></div>\n'
         '  <p class="did">Start with a free 15-minute audit of your website, Google profile and search ranking. '
         '<a href="/free-audit/">Book the audit</a></p>\n</li>')
     return '<ol class="lineup">\n' + "\n".join(items) + "\n</ol>"
