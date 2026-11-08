@@ -1,0 +1,5 @@
+# GitHub Pages serves the built HTML as-is. Keep build sources and docs out of the site.
+exclude:
+  - _src
+  - README.md
+  - LICENSE-fonts.txt

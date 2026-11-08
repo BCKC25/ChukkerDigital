@@ -1,0 +1,52 @@
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/" aria-label="Chukker Digital, home">
+          <img src="/assets/img/crest.png" width="99" height="123" alt="" loading="lazy">
+          <span class="brand-name"><b>CHUKKER</b><span>DIGITAL</span></span>
+        </a>
+        <p style="margin-top:1rem;max-width:22rem">Website care, local SEO and Google and Meta ads for owner-run businesses in Aiken, South Carolina.</p>
+      </div>
+      <div>
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/plans/">Monthly plans</a></li>
+          <li><a href="/website-builds/">Website builds</a></li>
+          <li><a href="/how-it-works/">How it works</a></li>
+          <li><a href="/work/">Work</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+18037707220">(803) 770-7220</a></li>
+          <li><a href="mailto:j.lovett@chukkerdigital.com">j.lovett@chukkerdigital.com</a></li>
+          <li>Aiken, SC</li>
+          <li style="margin-top:.75rem"><a href="/free-audit/">Book a free 15-minute audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; {{year}} Chukker Digital LLC</span>
+      <span>Your website, Google and ad accounts always stay in your name.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function () {
+  var b = document.querySelector('.menu-toggle');
+  if (!b) return;
+  b.addEventListener('click', function () {
+    var open = b.getAttribute('aria-expanded') === 'true';
+    b.setAttribute('aria-expanded', String(!open));
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && b.getAttribute('aria-expanded') === 'true') { b.setAttribute('aria-expanded', 'false'); b.focus(); }
+  });
+})();
+</script>
+</body>
+</html>

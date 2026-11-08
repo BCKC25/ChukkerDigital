@@ -1,0 +1,8 @@
+The fonts in assets/fonts/ are subsets of:
+
+  Cormorant Garamond, Copyright 2015 The Cormorant Project Authors
+  Archivo, Copyright 2019 The Archivo Project Authors
+
+Both are licensed under the SIL Open Font License, Version 1.1.
+Full license text: https://openfontlicense.org/open-font-license-official-text/
+Sources: https://github.com/google/fonts (ofl/cormorantgaramond, ofl/archivo)
