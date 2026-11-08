@@ -356,12 +356,14 @@
       entry.target.classList.add('in');
       io.unobserve(entry.target);
     });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  }, { rootMargin: '0px 0px -18% 0px', threshold: 0.2 });
   targets.forEach(function (el) {
-    // Stagger siblings in the same group: 0, 90, 180... capped so long lists don't drag.
+    // A short beat before each block, then siblings in a group follow 180ms apart (capped).
     var i = 0, s = el.previousElementSibling;
     while (s) { if (s.classList.contains('reveal')) i++; s = s.previousElementSibling; }
-    el.style.setProperty('--reveal-delay', Math.min(i, 4) * 90 + 'ms');
+    // The Order of play box on the cover waits for the headline to land first.
+    var base = el.classList.contains('order') ? 550 : 150;
+    el.style.setProperty('--reveal-delay', base + Math.min(i, 5) * 180 + 'ms');
     el.classList.add('reveal');
     io.observe(el);
   });
