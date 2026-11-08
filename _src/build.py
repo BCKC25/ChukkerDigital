@@ -198,9 +198,9 @@ PAGES = [
     {
         "slug": "work", "src": "work.html", "nav": "work",
         "title": "Our Work for Aiken Businesses | Chukker Digital",
-        "description": "Websites, Google listings and ads Chukker Digital runs for Aiken businesses, including a beauty studio, a yoga studio and a kettle corn maker.",
+        "description": "Websites, Google listings and ads Chukker Digital runs in Aiken: a beauty studio, plus the family yoga studio and kettle corn business where it started.",
         "h1": "Work for Aiken businesses", "crumb": "Work", "period": "Today's lineup",
-        "intro": "Chukker Digital runs the websites, Google listings and ads for these local businesses today.",
+        "intro": "Chukker Digital started with its own family businesses and now runs websites, Google listings and ads for Aiken businesses like these.",
         "priority": "0.6",
     },
     {
@@ -256,12 +256,13 @@ LINEUP = [
      "Its custom-coded website sends each service to the right provider's booking: Square for lashes, "
      "waxing and nails, and direct booking with each stylist for hair and spray tan.",
      ("https://totalvibesalon.com/", "totalvibesalon.com")),
-    ("Yoga studio in Aiken", "Peak Mobility Yoga",
-     "A new studio website launched from scratch, with Mindbody class sign-ups, Google Analytics, and Google Ads run through the Chukker Digital manager account.",
+    ("My wife's yoga studio in Aiken", "Peak Mobility Yoga",
+     "My wife's studio, and the first site Chukker Digital launched from scratch: Mindbody class sign-ups, "
+     "Google Analytics, and Google Ads run through the Chukker Digital manager account.",
      ("https://www.peakmobilityyoga.com/", "peakmobilityyoga.com")),
-    ("Kettle corn maker in Aiken", "Big Cheese Kettle Co.",
-     "A veteran-owned, family-run maker of small-batch kettle corn and popcorn, sold at markets and events. "
-     "Its website shows the flavors and takes orders ahead for booth pickup and local delivery.",
+    ("My own kettle corn business in Aiken", "Big Cheese Kettle Co.",
+     "My own business, and where I test every tool and ad strategy before using it for clients. "
+     "Small-batch kettle corn sold at markets and events, with orders ahead for booth pickup and local delivery.",
      ("https://bigcheesekettleco.com/", "bigcheesekettleco.com")),
 ]
 
