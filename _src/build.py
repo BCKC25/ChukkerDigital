@@ -40,7 +40,7 @@ BUSINESS = {
     "description": "Website care, local SEO and Google and Meta ad management for owner-run small businesses in Aiken, South Carolina, on flat monthly plans.",
     "telephone": PHONE_E164,
     "email": EMAIL,
-    "priceRange": "$300–$2,000+ per month",
+    "priceRange": "$150–$2,000+ per month",
     "address": {
         "@type": "PostalAddress",
         "addressLocality": "Aiken",
@@ -80,14 +80,14 @@ WEBSITE = {
 # ---------------------------------------------------------------------------
 PLANS = [
     {
-        "tier": "Tier 1", "name": "Maintain & Protect", "min": 300, "max": 500, "plus": False,
+        "tier": "Tier 1", "name": "Maintain & Protect", "min": 150, "max": 250, "plus": False,
         "fit": "Your website works and customers already find you. You just don't have time to keep it updated and secure.",
-        "items": ["Site upkeep and security updates", "Up to 5 small text and photo changes a month",
+        "items": ["Site upkeep and security updates", "Up to 3 small text and photo changes a month",
                   "Monthly Google Analytics check-in", "Broken-site fixes the same day"],
         "common": "Established shops, contractors and services that run on referrals.",
     },
     {
-        "tier": "Tier 2", "name": "Grow & Optimize", "min": 800, "max": 1200, "plus": False,
+        "tier": "Tier 2", "name": "Grow & Optimize", "min": 600, "max": 1000, "plus": False,
         "fit": "People search \"near me\" for what you do, and your competitors show up first on Google Maps.",
         "items": ["Everything in Tier 1", "Local SEO and keyword targeting",
                   "2 new content pieces a month", "Weekly Google Business Profile posts"],
@@ -118,7 +118,7 @@ FAQ = {
         ("What does Chukker Digital do?",
          "Chukker Digital looks after the online side of owner-run businesses in Aiken, SC: website upkeep and changes, local SEO and Google Business Profile management, and Google and Meta ads. You pick one flat monthly plan and one local person handles it."),
         ("How much does it cost?",
-         "Monthly plans are $300–$500 for website care, $800–$1,200 to add local SEO and Google Business Profile management, and $1,500–$2,000+ to add Google and Meta ads. Your exact rate is set in a written quote after a free 15-minute audit. <a href=\"/plans/\">See the plans</a>."),
+         "Monthly plans are $150–$250 for website care, $600–$1,000 to add local SEO and Google Business Profile management, and $1,500–$2,000+ to add Google and Meta ads. Your exact rate is set in a written quote after a free 15-minute audit. <a href=\"/plans/\">See the plans</a>."),
         ("How much does a new website cost in Aiken?",
          "Website builds are a one-time project, separate from the monthly plans: a template site from $1,500, a custom design from $2,500, or a hand-coded site from $4,000. <a href=\"/website-builds/\">See website builds</a>."),
         ("Do I own my website and accounts?",
@@ -174,7 +174,7 @@ PAGES = [
     {
         "slug": "plans", "src": "plans.html", "nav": "plans",
         "title": "Monthly Website, SEO & Ads Plans in Aiken, SC | Chukker Digital",
-        "description": "Flat monthly plans for Aiken small businesses: website care from $300, local SEO from $800, and Google and Meta ad management from $1,500. No hourly billing.",
+        "description": "Flat monthly plans for Aiken small businesses: website care from $150, local SEO from $600, and Google and Meta ad management from $1,500. No hourly billing.",
         "h1": "Plans and pricing", "crumb": "Plans", "period": "Monthly plans",
         "intro": "Three flat monthly plans, each built for a different stage. Find the description that fits your business, and that's your plan.",
         "faq": "plans", "priority": "0.9", "offers": "plans",
@@ -239,7 +239,7 @@ def money(n):
 FEATURES = [
     # (row label, [tier 1, tier 2, tier 3]); True = included, False = not included, text = detail
     ("Site upkeep, security updates and backups", [True, True, True]),
-    ("Text and photo changes", ["5 a month", "5 a month", "5 a month"]),
+    ("Text and photo changes", ["3 a month", "5 a month", "Unlimited"]),
     ("Broken-site fixes the same day", [True, True, True]),
     ("Monthly check-in email", [True, True, True]),
     ("Local SEO and keyword targeting", [False, True, True]),
